@@ -32,6 +32,6 @@ matrix_inf['min'] = matrix.min()
 with open(result, 'w') as res:
     res.write(json.dumps(matrix_inf))
 
-matrix_norm = matrix / matrix_inf.get('max')
+matrix_norm = matrix / matrix_inf.get('sum')
 
 np.save(mat_norm, matrix_norm)

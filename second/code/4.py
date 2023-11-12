@@ -16,9 +16,9 @@ def changes(prod, change):
     elif change['method'] == 'sub':
         prod['price'] -= change['param']
     elif change['method'] == 'percent+':
-        prod['price'] *= (change['param'] / 100 + 1)
+        prod['price'] *= (change['param'] + 1)
     elif change['method'] == 'percent-':
-        prod['price'] *= (1 - change['param'] / 100)
+        prod['price'] *= (1 - change['param'])
     # print(prod['price'])
     
 

@@ -8,8 +8,8 @@ import pickle
 text_var = 'data_5.csv'
 my_file = os.path.join(os.path.dirname(__file__), os.path.normpath(text_var))
 r_file_json = os.path.join(os.path.dirname(__file__), os.path.normpath('res_task5.json'))
-r_file_pickle = os.path.join(os.path.dirname(__file__), os.path.normpath('res_task5.pkl'))
-r_file_msgpack = os.path.join(os.path.dirname(__file__), os.path.normpath('res_task5.msgpack'))
+r_file_pickle = os.path.join(os.path.dirname(__file__), os.path.normpath('data_task5.pkl'))
+r_file_msgpack = os.path.join(os.path.dirname(__file__), os.path.normpath('data_task5.msgpack'))
 
 data = []
 with open(my_file) as f:
@@ -87,11 +87,11 @@ with open(r_file_json, 'w') as res:
     res.write(json.dumps(result))    
 
 with open(r_file_pickle, "wb") as res:
-    res.write(pickle.dumps(result))
+    res.write(pickle.dumps(data))
 
 with open(r_file_msgpack, 'wb') as res:
-    res.write(msgpack.dumps(result))
+    res.write(msgpack.dumps(data))
 
-print(f'res_json    = {os.path.getsize(r_file_json)}')
-print(f'res_msgpack = {os.path.getsize(r_file_msgpack)}')
-print(f'res_pickle  = {os.path.getsize(r_file_pickle)}')
+# print(f'res_json    = {os.path.getsize(r_file_json)}')
+print(f'data_msgpack = {os.path.getsize(r_file_msgpack)}')
+print(f'data_pickle  = {os.path.getsize(r_file_pickle)}')
