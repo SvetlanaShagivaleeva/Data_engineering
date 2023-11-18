@@ -56,7 +56,7 @@ for i in range(1, max_file):
 # отсортируем значения в порядке увеличения памяти и запишем в файл
 items = sorted(items, key=lambda x: x['Оперативная память'])
 
-with open(os.path.join(result, os.path.normpath("res_2_sort.json")), 'w') as f:
+with open(os.path.join(result, os.path.normpath("res_2_sort.json")), 'w', encoding='utf-8') as f:
     f.write(json.dumps(items, ensure_ascii=False))
 
 # выполним фильтрацию, отбросив телефоны с объективом меньше 4, и запишем в файл
@@ -67,7 +67,7 @@ for note in items:
         if note['Количество объективов'] > 3:
             filter_views.append(note)
 
-with open(os.path.join(result, os.path.normpath("res_2_filter.json")), 'w') as f:
+with open(os.path.join(result, os.path.normpath("res_2_filter.json")), 'w', encoding='utf-8') as f:
     f.write(json.dumps(filter_views, ensure_ascii=False))
 
 # print(len(items))
@@ -105,6 +105,7 @@ for product in items:
 all_weight['avr_weight'] = all_weight['sum_weight'] / count
 all_weight['std_weight'] = statistics.stdev(std_weight)
 
-with open(os.path.join(result, os.path.normpath("res_2_charact.json")), 'w') as f:
-   f.write(json.dumps(all_weight, ensure_ascii=False))
-   f.write(json.dumps(proc, ensure_ascii=False))
+all_res = [all_weight, proc]
+
+with open(os.path.join(result, os.path.normpath("res_2_charact.json")), 'w', encoding='utf-8') as f:
+   f.write(json.dumps(all_res, ensure_ascii=False))

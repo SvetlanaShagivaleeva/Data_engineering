@@ -46,7 +46,7 @@ for i in range(1, max_file):
 # отсортируем значения в алфавитном порядке и запишем в файл
 items = sorted(items, key=lambda x: x['name'])
 
-with open(os.path.join(result, os.path.normpath("res_4_sort.json")), 'w') as f:
+with open(os.path.join(result, os.path.normpath("res_4_sort.json")), 'w', encoding='utf-8') as f:
     f.write(json.dumps(items, ensure_ascii=False))
 
 # выполним фильтрацию, отобрав новые вещи, и запишем в файл
@@ -55,7 +55,7 @@ for product in items:
     if product.get('new', False) != False:
         filter_views.append(product)
 
-with open(os.path.join(result, os.path.normpath("res_4_filter.json")), 'w') as f:
+with open(os.path.join(result, os.path.normpath("res_4_filter.json")), 'w', encoding='utf-8') as f:
     f.write(json.dumps(filter_views, ensure_ascii=False))
 
 # print(len(items))
@@ -86,6 +86,7 @@ for product in items:
 all_price['avr_price'] = all_price['sum_price'] / len(items)
 all_price['std_price'] = statistics.stdev(std_price)
 
-with open(os.path.join(result, os.path.normpath("res_4_charact.json")), 'w') as f:
-   f.write(json.dumps(all_price, ensure_ascii=False))
-   f.write(json.dumps(color, ensure_ascii=False))
+all_res = [all_price, color]
+
+with open(os.path.join(result, os.path.normpath("res_4_charact.json")), 'w', encoding='utf-8') as f:
+   f.write(json.dumps(all_res, ensure_ascii=False))

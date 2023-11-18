@@ -46,7 +46,7 @@ for i in range(1, max_file):
 # отсортируем значения по убыванию Общего объема SSD и запишем в файл
 items = sorted(items, key=lambda x: x['Общий объем SSD, ГБ'], reverse=True)
 
-with open(os.path.join(result, os.path.normpath("res_1_sort.json")), 'w') as f:
+with open(os.path.join(result, os.path.normpath("res_1_sort.json")), 'w', encoding='utf-8') as f:
     f.write(json.dumps(items, ensure_ascii=False))
 
 # выполним фильтрацию, отсеяв ноутбуки, работающие автономно меньше 5 часов, и запишем в файл
@@ -56,7 +56,7 @@ for time in items:
         if time['Время автономной работы, ч'] >= 5:
             filter_views.append(time)
 
-with open(os.path.join(result, os.path.normpath("res_1_filter.json")), 'w') as f:
+with open(os.path.join(result, os.path.normpath("res_1_filter.json")), 'w', encoding='utf-8') as f:
     f.write(json.dumps(filter_views, ensure_ascii=False))
 
 # print(len(items))
@@ -90,6 +90,7 @@ for note in items:
 all_weight['avr_weight'] = all_weight['sum_weight'] / count
 all_weight['std_weight'] = statistics.stdev(std_weight)
 
-with open(os.path.join(result, os.path.normpath("res_1_charact.json")), 'w') as f:
-   f.write(json.dumps(all_weight, ensure_ascii=False))
-   f.write(json.dumps(sorev, ensure_ascii=False))
+all_res = [all_weight, sorev]
+
+with open(os.path.join(result, os.path.normpath("res_1_charact.json")), 'w', encoding='utf-8') as f:
+   f.write(json.dumps(all_res, ensure_ascii=False))

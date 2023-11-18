@@ -39,7 +39,7 @@ for i in range(1, max_file):
 # отсортируем значения в алфавитном порядке и запишем в файл
 items = sorted(items, key=lambda x: x['name'])
 
-with open(os.path.join(result, os.path.normpath("res_3_sort.json")), 'w') as f:
+with open(os.path.join(result, os.path.normpath("res_3_sort.json")), 'w', encoding='utf-8') as f:
     f.write(json.dumps(items, ensure_ascii=False))
 
 # выполним фильтрацию по знаку задиака ДЕВА и запишем в файл
@@ -48,7 +48,7 @@ for star in items:
     if star['const'] == 'Дева':
         filter_views.append(star)
 
-with open(os.path.join(result, os.path.normpath("res_3_filter.json")), 'w') as f:
+with open(os.path.join(result, os.path.normpath("res_3_filter.json")), 'w', encoding='utf-8') as f:
     f.write(json.dumps(filter_views, ensure_ascii=False))
 
 # рассчитаем числовые характеристики для радиуса звезд и узнаем распределение по знакам зодиака
@@ -73,6 +73,7 @@ for star in items:
 all_radius['avr_radius'] = all_radius['sum_radius'] / len(items)
 all_radius['std_radius'] = statistics.stdev(std_radius)
 
-with open(os.path.join(result, os.path.normpath("res_1_charact.json")), 'w') as f:
-   f.write(json.dumps(all_radius, ensure_ascii=False))
-   f.write(json.dumps(zz, ensure_ascii=False))
+all_res = [all_radius, zz]
+
+with open(os.path.join(result, os.path.normpath("res_1_charact.json")), 'w', encoding='utf-8') as f:
+   f.write(json.dumps(all_res, ensure_ascii=False))

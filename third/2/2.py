@@ -46,7 +46,7 @@ for i in range(1, max_file):
 # отсортируем значения по уровню убывания рейтинга и запишем в файл
 items = sorted(items, key=lambda x: x['price'], reverse=True)
 
-with open(os.path.join(result, os.path.normpath("res_2_sort.json")), 'w') as f:
+with open(os.path.join(result, os.path.normpath("res_2_sort.json")), 'w', encoding='utf-8') as f:
     f.write(json.dumps(items, ensure_ascii=False))
 
 # выполним фильтрацию по бонусам и запишем в файл
@@ -55,7 +55,7 @@ for product in items:
     if product['bonus'] >= 1000:
         filter_views.append(product)
 
-with open(os.path.join(result, os.path.normpath("res_2_filter.json")), 'w') as f:
+with open(os.path.join(result, os.path.normpath("res_2_filter.json")), 'w', encoding='utf-8') as f:
     f.write(json.dumps(filter_views, ensure_ascii=False))
 
 # рассчитаем числовые характеристики для цены и узнаем расширения камер
@@ -83,6 +83,7 @@ for product in items:
 all_price['avr_price'] = all_price['sum_price'] / len(items)
 all_price['std_price'] = statistics.stdev(std_price)
 
-with open(os.path.join(result, os.path.normpath("res_2_charact.json")), 'w') as f:
-   f.write(json.dumps(all_price, ensure_ascii=False))
-   f.write(json.dumps(camera, ensure_ascii=False))
+all_res = [all_price, camera]
+
+with open(os.path.join(result, os.path.normpath("res_2_charact.json")), 'w', encoding='utf-8') as f:
+   f.write(json.dumps(all_res, ensure_ascii=False))
