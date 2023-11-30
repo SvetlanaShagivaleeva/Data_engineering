@@ -1,0 +1,36 @@
+CREATE TABLE my_first_table (
+    id     INTEGER    PRIMARY KEY AUTOINCREMENT,
+    title  TEXT (256),
+    author TEXT (256),
+    genre  TEXT (256),
+    pages  INTEGER,
+    year   INTEGER,
+    isbn   TEXT (256),
+    rating REAL,
+    views  INTEGER
+);
+
+
+CREATE TABLE music (
+    id          INTEGER    PRIMARY KEY AUTOINCREMENT,
+    artist      TEXT (256),
+    song        TEXT (256),
+    duration_ms INTEGER,
+    year        INTEGER,
+    tempo       REAL,
+    genre       TEXT (256),
+    energy      REAL
+);
+
+CREATE TABLE product (
+    id          INTEGER    PRIMARY KEY AUTOINCREMENT,
+    name        TEXT (256) UNIQUE,
+    price       REAL,
+    quantity    INTEGER,
+    category    TEXT,
+    fromCity    TEXT,
+    isAvailable TEXT,
+    views       INTEGER
+);
+
+
