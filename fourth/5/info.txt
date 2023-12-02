@@ -1,0 +1,39 @@
+1. Предметная область: База данных городов,штатов и стран
+2. SQL: Использовалась sqlite, с помощью sqlitestudio
+3. Исходные файлы: в папке data
+4. Скрипт БД:
+	4.1. Первая талица:
+CREATE TABLE contries (
+    id         INTEGER    PRIMARY KEY AUTOINCREMENT,
+    name       TEXT (256),
+    iso3       TEXT (256),
+    iso2       TEXT (256),
+    phone_code TEXT (256),
+    capital    TEXT (256),
+    currency   TEXT (256),
+    region     TEXT (256),
+    subregion  TEXT (256),
+    latitude   REAL,
+    longitude  REAL
+);
+	4.2. Вторая таблица:
+CREATE TABLE states (
+    id           INTEGER    PRIMARY KEY AUTOINCREMENT,
+    name         TEXT (256),
+    country_id   INTEGER,
+    country_code TEXT (256),
+    state_code   TEXT (256),
+    latitude     REAL,
+    longitude    REAL
+);
+	4.3. Третья таблица:
+CREATE TABLE cities (
+    id           INTEGER    PRIMARY KEY AUTOINCREMENT,
+    name         TEXT (256),
+    state_id     INTEGER,
+    state_code   TEXT,
+    country_id   INTEGER,
+    country_code TEXT (256),
+    latitude     REAL,
+    longitude    REAL
+);
