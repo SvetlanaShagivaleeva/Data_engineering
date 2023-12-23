@@ -1,0 +1,1 @@
+{"Unnamed: 0": "uint32", "YEAR": "uint16", "DAY_OF_WEEK": "uint8", "AIRLINE": "category", "FLIGHT_NUMBER": "uint16", "ORIGIN_AIRPORT": "category", "SCHEDULED_TIME": "uint16", "ELAPSED_TIME": "uint16", "AIR_TIME": "uint16", "DISTANCE": "uint16", "TAXI_IN": "uint8"}
