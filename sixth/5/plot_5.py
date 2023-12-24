@@ -42,10 +42,13 @@ dataset.info(memory_usage='deep')
 # plot = sns.histplot(data=grouped_df, x="H", hue="H", bins=100)
 # plot.get_figure().savefig(os.path.join(res_file, os.path.normpath('H_mean.png')))
 
-# круговая
-# d2 = dataset.groupby(['class'])['class'].count()
-# circ = d2.plot(kind='pie', y=d2.keys(), autopct='%1.0f%%', title='')
-# circ.get_figure().savefig(os.path.join(res_file, os.path.normpath('class.png')))
+# круговая, без наиболее распространенного класса и наименее распространенных
+data = dataset[dataset['class'] != 'MBA']
+d2 = data.groupby(['class'])['class'].count()
+d2 = d2[d2 > len(data) * 0.05]
+circ = d2.plot(kind='pie', y=d2.keys(), autopct='%1.0f%%', title='')
+plt.tight_layout()
+circ.get_figure().savefig(os.path.join(res_file, os.path.normpath('class.png')))
 
 # ящик с усами
 # plot = sns.boxplot(data=dataset, x='diameter', y='class')

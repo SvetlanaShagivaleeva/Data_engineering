@@ -32,7 +32,9 @@ dataset = pd.read_csv(first, usecols=lambda x: x in need_dtypes.keys(),
 dataset.info(memory_usage='deep')
 
 # столбчатый тип, штаты
+# plt.figure(figsize=(15, 6))
 # plot = sns.histplot(data=dataset, x="State", bins=100)
+# plt.xticks(rotation=45)
 # plot.get_figure().savefig(os.path.join(res_file, os.path.normpath('State.png')))
 
 # часовые пояса, круговая

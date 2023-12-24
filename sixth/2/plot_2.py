@@ -33,6 +33,7 @@ dataset.info(memory_usage='deep')
 
 # распределение по моделям, столбчатый тип
 # plot = sns.histplot(data=dataset, x="modelName", hue="modelName", bins=100)
+# plt.xticks(rotation=45)
 # plot.get_figure().savefig(os.path.join(res_file, os.path.normpath('modelName.png')))
 
 # бренды, круговая
