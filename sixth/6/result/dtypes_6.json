@@ -1,0 +1,1 @@
+{"Unnamed: 0": "uint32", "ID": "object", "Source": "category", "Severity": "uint8", "Start_Lat": "float32", "End_Lat": "float32", "Distance(mi)": "float32", "City": "category", "County": "category", "State": "category", "Country": "category", "Timezone": "category"}
